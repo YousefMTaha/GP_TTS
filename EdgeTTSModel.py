@@ -18,6 +18,6 @@ columns_to_remove = ["client_id", "up_votes", "down_votes",
 async def synthesize_speech(text, voice="en-US-JennyNeural") -> str:
     communicate = edge_tts.Communicate(text, voice)
     path = f"GP-TTS\Generated_Voices\output_{voice}.mp3"
-    await communicate.save(path)
-    current_directory = os.path.dirname(os.path.abspath(path))
-    return f"{current_directory}\output_{voice}.mp3"
+    file_path = os.path.abspath(path)
+    await communicate.save(file_path)
+    return file_path
