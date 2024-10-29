@@ -13,7 +13,9 @@ def home():
 
 @app.route('/tts', methods=['POST'])
 async def convert_text_to_voice():
-    text = request.headers['text']
+    data = request.get_json()
+    text = data.get('text')
+
     audio_path = await synthesize_speech(text=text)
 
     if os.path.exists(audio_path):
