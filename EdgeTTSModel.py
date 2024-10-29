@@ -19,6 +19,5 @@ async def synthesize_speech(text, voice="en-US-JennyNeural") -> str:
     communicate = edge_tts.Communicate(text, voice)
     path = f"GP_TTS\Generated_Voices\output_{voice}.mp3"
     file_path = os.path.abspath(path)
-    print(file_path)
     await communicate.save(file_path)
     return file_path
