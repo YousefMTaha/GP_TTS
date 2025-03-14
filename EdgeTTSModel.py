@@ -5,7 +5,7 @@ import torch
 import os
 
 warnings.filterwarnings("ignore")
-login("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")
+login("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")
 
 os.environ["WANDB_DISABLED"] = "true"
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
