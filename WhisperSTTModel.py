@@ -1,11 +1,11 @@
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
-from huggingface_hub import login
+# from huggingface_hub import login
 import warnings
 import torch
 import os
 
 warnings.filterwarnings("ignore")
-login("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")
+# login("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")
 
 os.environ["WANDB_DISABLED"] = "true"
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
@@ -30,6 +30,7 @@ def init_model_and_processor():
 
     model.generation_config.language = "en"
     model.generation_config.task = "transcribe"
+    model.generation_config.forced_decoder_ids = None
     return model, processor
 
 
@@ -41,6 +42,7 @@ def get_pipeline(model, processor):
         feature_extractor=processor.feature_extractor,
         torch_dtype=torch_dtype,
         device=device,
+        return_timestamps=True
     )
 
 

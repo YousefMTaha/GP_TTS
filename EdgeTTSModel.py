@@ -1,11 +1,11 @@
-from huggingface_hub import login
+# from huggingface_hub import login
 import edge_tts
 import warnings
 import torch
 import os
 
 warnings.filterwarnings("ignore")
-login("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")
+# login("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")
 
 os.environ["WANDB_DISABLED"] = "true"
 device = "cuda:0" if torch.cuda.is_available() else "cpu"
